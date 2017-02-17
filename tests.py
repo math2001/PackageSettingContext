@@ -21,9 +21,9 @@ class FakeSettings:
         return self.data.get(key, default)
 
 def main():
-    sys.stdout.write('----------------------------------------------')
-    sys.stdout.write('| PackageSettingContext.tests: Running tests |')
-    sys.stdout.write('----------------------------------------------')
+    sys.stdout.write('----------------------------------------------\n')
+    sys.stdout.write('| PackageSettingContext.tests: Running tests |\n')
+    sys.stdout.write('----------------------------------------------\n')
     settings = FakeSettings({
         'first': False,
         'second': 4,
@@ -36,12 +36,12 @@ def main():
     })
 
     tests = [
-        ['plugin_settings.notice.the.s', sublime.OP_EQUAL, True, None],
-        ['plugin_setting.TestSetting.first', sublime.OP_EQUAL, False, True],
-        ['plugin_setting.TestSetting.second', sublime.OP_EQUAL, 4, True],
-        ['plugin_setting.TestSetting.third', sublime.OP_NOT_EQUAL, None, True],
-        ['plugin_setting.TestSetting.fourth', sublime.OP_NOT_EQUAL, {}, True],
-        ['plugin_setting.TestSetting.fourth.this.1.cool.1', sublime.OP_EQUAL, '?', True],
+        ['package_settings.notice.the.s', sublime.OP_EQUAL, True, None],
+        ['package_setting.TestSetting.first', sublime.OP_EQUAL, False, True],
+        ['package_setting.TestSetting.second', sublime.OP_EQUAL, 4, True],
+        ['package_setting.TestSetting.third', sublime.OP_NOT_EQUAL, None, True],
+        ['package_setting.TestSetting.fourth', sublime.OP_NOT_EQUAL, {}, True],
+        ['package_setting.TestSetting.fourth.this.1.cool.1', sublime.OP_EQUAL, '?', True],
     ]
 
     for key, operand, operator, expected in tests:

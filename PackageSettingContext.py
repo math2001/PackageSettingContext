@@ -38,10 +38,10 @@ def setting_advanced_get(settings, key):
 
 def get_setting(key, operator, operand, test_settings=None):
 
-    if not key.startswith('plugin_setting.'):
+    if not key.startswith('package_setting.'):
         return
 
-    key = key[len('plugin_setting.'):]
+    key = key[len('package_setting.'):]
 
     if not '.' in key:
         sublime.error_message('[PackageSettingContext] Unvalid key: ' + key)
