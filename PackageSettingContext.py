@@ -10,7 +10,7 @@ def is_integer(string):
         return False
     return int(string) == float(string)
 
-def get_setting(settings, key):
+def setting_advanced_get(settings, key):
     """Allow object.key.3 kind of key.
     This example will return '!' for this settings:
     {
@@ -36,24 +36,28 @@ def get_setting(settings, key):
             return
     return value
 
-def quick_tests():
-    # CSW: ignore
-    print(get_setting(sublime.load_settings('Package Control.sublime-settings'),
-                      'package_profiles.Binaries Only.files_to_ignore.0'))
+def get_setting(key, operator, operand, test_settings=None):
 
+    if not key.startswith('plugin_setting.'):
+        return
 
-class PluginSettingContext(sublime_plugin.EventListener):
+    key = key[len('plugin_setting.'):]
+
+    if not '.' in key:
+        sublime.error_message('[PackageSettingContext] Unvalid key: ' + key)
+        return
+
+    package, key = key.split('.', 1)
+
+    settings = test_settings or sublime.load_settings(package + '.sublime-settings')
+    setting = setting_advanced_get(settings, key)
+
+    if operator == sublime.OP_EQUAL:
+        return setting == operand
+    elif operator == sublime.OP_NOT_EQUAL:
+        return settings != operand
+
+class PackageSettingContext(sublime_plugin.EventListener):
 
     def on_query_context(self, view, key, operator, operand, match_all):
-
-        if not key.startswith('plugin_setting.'):
-            return
-
-        key = key[len('plugin_setting.'):]
-        package, setting_name = key.split('.', 1)
-        settings = sublime.load_settings(package + '.sublime-settings')
-        setting = settings.get(setting_name)
-        if operator == sublime.OP_EQUAL:
-            return setting == operand
-        elif operator == sublime.OP_NOT_EQUAL:
-            return settings != operand
+        return get_setting(key, operator, operand)
