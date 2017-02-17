@@ -92,3 +92,18 @@ And your key binding:
 ```
 
 And it works!
+
+## How to use it
+
+### If you are a package dev
+
+If you want to use this feature in your *package*, just [add it as a dependency][]. So, for example
+
+In your `dependencies.json`
+
+```
+
+```
+
+
+[add it as a dependency]: https://packagecontrol.io/docs/dependencies
