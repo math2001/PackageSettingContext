@@ -3,7 +3,13 @@
 """
 Quick tests to test the PackageSettingContext function.
 
-To run them, uncomment the 'main()' at the end, save this file, and the output's in the console!
+To run them, paste
+
+from PackageSettingContext.all.tests import main; main()
+
+in the console, 
+
+, save this file, and the output's in the console!
 """
 
 from .PackageSettingContext import get_setting
@@ -48,5 +54,3 @@ def main():
         result = get_setting(key, operand, operator, test_settings=settings)
         if result != expected:
             sys.stdout.write("\nError: the key {!r} return {!r} instead of {!r}".format(key, result, expected))
-
-# main()

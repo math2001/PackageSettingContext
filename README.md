@@ -95,15 +95,26 @@ And it works!
 
 ## How to use it
 
-### If you are a package dev
+### If you want to use this in your package
 
 If you want to use this feature in your *package*, just [add it as a dependency][]. So, for example
 
 In your `dependencies.json`
 
+```json
+{
+    "*": {
+        "*": [
+            "PackageSettingContext"
+        ]
+    }
+}
 ```
 
-```
+### If you want to use this in your regular keymap
+
+What you can do is actually set this as a dependency to your `User` package. Create the file
+`Packages/User/dependencies.json`, and set the same content as above
 
 
 [add it as a dependency]: https://packagecontrol.io/docs/dependencies
