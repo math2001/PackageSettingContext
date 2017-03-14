@@ -71,5 +71,3 @@ def main():
         if result != expected:
             sys.stdout.write("\nError: the key {!r} return {!r} instead of {!r}".format(key, result, expected))
     sys.stdout.write('\n')
-
-main()
