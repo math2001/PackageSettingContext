@@ -5,9 +5,9 @@ Quick tests to test the PackageSettingContext function.
 
 To run them, paste
 
-from PackageSettingContext.all.tests import main; main()
+from package_setting_context.all.tests import main; main()
 
-in the console, 
+in the console,
 
 , save this file, and the output's in the console!
 """
