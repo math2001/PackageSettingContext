@@ -2,6 +2,7 @@
 
 import sublime
 import sublime_plugin
+import re
 
 def is_integer(string):
     try:
@@ -55,7 +56,16 @@ def get_setting(key, operator, operand, test_settings=None):
     if operator == sublime.OP_EQUAL:
         return setting == operand
     elif operator == sublime.OP_NOT_EQUAL:
-        return settings != operand
+        return setting != operand
+    elif operator == sublime.OP_REGEX_MATCH:
+        return isinstance(setting, str) and re.match(operand, setting) is not None
+    elif operator == sublime.OP_NOT_REGEX_MATCH:
+        return isinstance(setting, str) and re.match(operand, setting) is None
+    elif operator == sublime.OP_REGEX_CONTAINS:
+        return isinstance(setting, str) and re.search(operand, setting) is not None
+    elif operator == sublime.OP_NOT_REGEX_CONTAINS:
+        return isinstance(setting, str) and re.search(operand, setting) is None
+
 
 class PackageSettingContext(sublime_plugin.EventListener):
 
