@@ -5,11 +5,17 @@ binding by simply changing your package's settings. And all it requires you to d
 
 ```json
 "context": [
-    { "key": "plugin_setting.YourPackage.setting_to_enable_this_key_binding" }
+    { "key": "package_setting.SettingsFileName.setting_to_enable_this_key_binding" }
 ]
 ```
 
 That's it!
+
+To make things clearer, here's when it's decomposed:
+
+1. `package_setting.`: this prefix is needed and the exact same in every cases.
+2. `SettingsFileName`: this part might be a bit more confusing. It the name of the setting file *without the extension* in which you write custom settings for the package. It usually is the same as the package name. It also usually have the extension `.sublime-settings`.
+3. `setting_to_enable_this_key_binding`: simply the setting's name. It can be a bit more than that though, keep reading to get more :wink:
 
 ## Overview
 
@@ -27,7 +33,7 @@ A `YourPackage.sublime-settings` file:
         "keys": ["ctrl+l"],
         "command": "my_super_command",
         "context": [
-            { "key": "plugin_setting.YourPackage.enabled_shortcut_my_super_command" }
+            { "key": "package_setting.SettingsFileName.enabled_shortcut_my_super_command" }
         ]
     }
 ]
@@ -54,7 +60,7 @@ course change it:
         "keys": ["ctrl+l"],
         "command": "my_super_command",
         "context": [
-            { "key": "plugin_setting.YourPackage.enabled_shortcut_my_super_command",
+            { "key": "package_setting.SettingsFileName.enabled_shortcut_my_super_command",
               "operand": "not_equal",
               "operator": "a string for example!"}
         ]
@@ -85,7 +91,7 @@ And your key binding:
         "keys": ["ctrl+l"],
         "command": "my_super_command",
         "context": [
-            { "key": "plugin_setting.Hello.my_setting.my_key.2.on"}
+            { "key": "package_setting.SettingsFileName.my_setting.my_key.2.on"}
         ]
     }
 ]
@@ -97,7 +103,7 @@ And it works!
 
 ### If you want to use this in your package
 
-If you want to use this feature in your *package*, just [add it as a dependency][]. So, for example
+If you want to use this feature in your *package*, just [add it as a dependency],[]. So, for example
 
 In your `dependencies.json`
 
