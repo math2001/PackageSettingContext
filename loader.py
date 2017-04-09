@@ -1,3 +1,3 @@
 # -*- encoding: utf-8 -*-
 
-from .all import PackageSettingContext
+from package_setting_context.all import PackageSettingContext
