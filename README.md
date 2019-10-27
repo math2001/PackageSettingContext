@@ -1,4 +1,4 @@
-# PluginSettingContext
+# package_setting_context
 
 This "package" is a dependency for *your* package(s). It allows your users to enable/disable a key
 binding by simply changing your package's settings. And all it requires you to do is to add:
