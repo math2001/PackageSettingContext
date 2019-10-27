@@ -33,7 +33,7 @@ A `YourPackage.sublime-settings` file:
         "keys": ["ctrl+l"],
         "command": "my_super_command",
         "context": [
-            { "key": "package_setting.SettingsFileName.enabled_shortcut_my_super_command" }
+            { "key": "package_setting.YourPackage.enabled_shortcut_my_super_command" }
         ]
     }
 ]
@@ -60,7 +60,7 @@ course change it:
         "keys": ["ctrl+l"],
         "command": "my_super_command",
         "context": [
-            { "key": "package_setting.SettingsFileName.enabled_shortcut_my_super_command",
+            { "key": "package_setting.YourPackage.enabled_shortcut_my_super_command",
               "operand": "not_equal",
               "operator": "a string for example!"}
         ]
@@ -103,7 +103,7 @@ And it works!
 
 ### If you want to use this in your package
 
-If you want to use this feature in your *package*, just [add it as a dependency],[]. So, for example
+If you want to use this feature in your *package*, just [add it as a dependency][]. So, for example
 
 In your `dependencies.json`
 
@@ -111,7 +111,7 @@ In your `dependencies.json`
 {
     "*": {
         "*": [
-            "PackageSettingContext"
+            "package_setting_context"
         ]
     }
 }
